@@ -9,11 +9,13 @@ function createWindow () {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration:true
+      // 启用node
+      nodeIntegration:true,
+      // 允许渲染进程通过remote调用
+      enableRemoteModule: true
     }
   })
 
-  // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
   // 打开开发者工具
@@ -25,10 +27,18 @@ app.whenReady().then(() => {
   // 引入菜单配置
   require('./main/menu.js')
   app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
+
+  //注册全局快捷键
+  globalShortcut.register('ctrl+e',function(){
+    // 业务逻辑
+    console.log('ctrl+e registed');
+  })
+
+  //检测快捷键是否注册功能
+  console.log(globalShortcut.isRegistered('ctrl+e'));
+
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -38,5 +48,3 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.

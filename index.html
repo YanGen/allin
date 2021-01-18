@@ -2,18 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <a id='openBaiduDefaultBrowser' href='http://www.baidu.com'>默认浏览器打开百度</a>
+    
+    <button id="xiaoxi">消息对话</button>
+    <button id="notifyBtn">通知消息</button>
+    <button id="notifyPython">向python发一条消息</button>
 
-    <!-- You can also require other files to run in this process -->
+
     <script src="./render/menu.js"></script>
+    <script src="./render/localControl.js"></script>
+    <script src="./render/winMessage.js"></script>
+    <script src="./render/openPy.js"></script>
   </body>
 </html>

@@ -28,9 +28,8 @@ const template = [
 ]
 
 // 要使用主进程可调用api则从remote引入
-const {remote} = require('electron')
-const Memu = remote.Menu
-const m = Memu.buildFromTemplate(template)
+const remote = require('electron').remote
+const m = remote.Menu.buildFromTemplate(template)
 window.addEventListener('contextmenu',function(e){
     e.preventDefault
     m.popup({
